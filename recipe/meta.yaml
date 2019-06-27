@@ -1,5 +1,5 @@
 {% set name = "start_jupyter_cm" %}
-{% set version = "1.3.0" %}
+{% set version = "1.3.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 341a8a38e87fa34f8b2188a546028b41cde24715ecfe437cd3ef4268913c63ca
+  sha256: d442aad941616ee23f3ae2d5cd29515c94b67b58017c5d96c0b4766e8457c4e8
 
 build:
   number: 0
