@@ -16,13 +16,14 @@ build:
     - jupyter_context-menu_remove = start_jupyter_cm:_remove
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
   skip: true  # [osx]
+  skip: True  # [py2k]
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python
   run:
-    - python >=3.5
+    - python
 
 test:
   imports:
