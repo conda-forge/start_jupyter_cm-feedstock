@@ -11,6 +11,8 @@ source:
 
 build:
   number: 0
+  entry_points:
+    - start_jupyter_cm = start_jupyter_cm.command:_run
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
   skip: True  # [osx]
   skip: True  # [py2k]
@@ -27,6 +29,7 @@ test:
     - start_jupyter_cm
   commands:
     - start_jupyter_cm --help
+    - start_jupyter_cm --version
     - start_jupyter_cm
     - start_jupyter_cm --remove
 
