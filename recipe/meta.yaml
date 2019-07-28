@@ -1,5 +1,5 @@
 {% set name = "start_jupyter_cm" %}
-{% set version = "1.4.1" %}
+{% set version = "2.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,15 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1af42a46e5b42e40ffa84f6c8dc211a8094d0a4cf67f6169049775964babac96
+  sha256: 549fb7f8b74bf448263b250d50caabab588a68eafd6c8df92ee82b8f1b1a3656
 
 build:
   number: 0
   entry_points:
-    - jupyter_context-menu_add = start_jupyter_cm:_add
-    - jupyter_context-menu_remove = start_jupyter_cm:_remove
+    - start_jupyter_cm = start_jupyter_cm.command:_run
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  skip: true  # [osx]
+  skip: True  # [osx]
   skip: True  # [py2k]
 
 requirements:
@@ -26,11 +25,15 @@ requirements:
     - python
 
 test:
+  requires:
+    - notebook
   imports:
     - start_jupyter_cm
   commands:
-    - jupyter_context-menu_add --help
-    - jupyter_context-menu_remove --help
+    - start_jupyter_cm --help
+    - start_jupyter_cm --version
+    - start_jupyter_cm
+    - start_jupyter_cm --remove
 
 about:
   home: https://github.com/hyperspy/start_jupyter_cm
