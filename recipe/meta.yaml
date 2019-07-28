@@ -11,11 +11,8 @@ source:
 
 build:
   number: 0
-  entry_points:
-    - jupyter_context-menu_add = start_jupyter_cm:_add
-    - jupyter_context-menu_remove = start_jupyter_cm:_remove
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  skip: true  # [osx]
+  skip: True  # [osx]
   skip: True  # [py2k]
 
 requirements:
@@ -29,8 +26,9 @@ test:
   imports:
     - start_jupyter_cm
   commands:
-    - jupyter_context-menu_add --help
-    - jupyter_context-menu_remove --help
+    - start_jupyter_cm --help
+    - start_jupyter_cm
+    - start_jupyter_cm --remove
 
 about:
   home: https://github.com/hyperspy/start_jupyter_cm
