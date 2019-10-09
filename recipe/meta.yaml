@@ -11,18 +11,17 @@ source:
 
 build:
   number: 0
+  noarch: python
   entry_points:
     - start_jupyter_cm = start_jupyter_cm.command:_run
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  skip: True  # [osx]
-  skip: True  # [py2k]
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.3
   run:
-    - python
+    - python >=3.3
 
 test:
   requires:
