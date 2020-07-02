@@ -1,20 +1,20 @@
 {% set name = "start_jupyter_cm" %}
-{% set version = "2.1.0" %}
+{% set version = "2.2.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 242e60075257478c965205676a6288a9be44ad29beb768396694863196101c75
+  sha256: bda064a6cd1513264ca40f9b52eccf959bd04ba24fbb0cf4bc5acdcd814dee3c
 
 build:
   number: 0
   noarch: python
   entry_points:
     - start_jupyter_cm = start_jupyter_cm.command:_run
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   host:
