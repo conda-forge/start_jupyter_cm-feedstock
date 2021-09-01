@@ -26,9 +26,11 @@ requirements:
 test:
   requires:
     - notebook
+    - pip
   imports:
     - start_jupyter_cm
   commands:
+    - pip check
     - start_jupyter_cm --help
     - start_jupyter_cm --version
     - start_jupyter_cm
