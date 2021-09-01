@@ -1,5 +1,5 @@
 {% set name = "start_jupyter_cm" %}
-{% set version = "2.3.0" %}
+{% set version = "2.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 024c2764fe93f57ca0dbf2a2b3f4f6d8b19dbcce0effe90aa49bcc87de4ff944
+  sha256: 6c94c4cb268053199bb6e518b29635750adbf9c67d6ca75fa18c70172d1cf31a
 
 build:
   number: 0
@@ -26,9 +26,11 @@ requirements:
 test:
   requires:
     - notebook
+    - pip
   imports:
     - start_jupyter_cm
   commands:
+    - pip check
     - start_jupyter_cm --help
     - start_jupyter_cm --version
     - start_jupyter_cm
@@ -36,8 +38,7 @@ test:
 
 about:
   home: https://github.com/hyperspy/start_jupyter_cm
-  license: BSD
-  license_family: BSD
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: Add entries to start Jupyter from context menu.
 
