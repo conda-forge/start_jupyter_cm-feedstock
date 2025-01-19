@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d9f9107e1af763fd2eb227fc39cd7bd61da216f5dada7aa1161c3a2059559c90
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - start_jupyter_cm = start_jupyter_cm.command:_run
@@ -19,14 +19,16 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
 
 test:
   requires:
     - notebook
     - pip
+    - python {{ python_min }}
   imports:
     - start_jupyter_cm
   commands:
